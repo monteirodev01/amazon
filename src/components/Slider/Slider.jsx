@@ -1,0 +1,46 @@
+import React from "react";
+import { SwiperSlide, Swiper } from "swiper/react";
+import { Pagination, Navigation } from "swiper";
+
+// import swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { SliderProducts } from "../../data/products";
+
+import "./Slider.css";
+
+const Slider = () => {
+  return (
+    <div className="s-container">
+      <Swiper
+      modules={[Pagination, Navigation]}
+      className="mySwiper"
+      navigation={true}
+      loopFillGroupWithBlank={true}
+        slidesPerGroup={1}
+        spaceBetween={40}
+        slidesPerView={3}
+        loop={true}
+      >
+        {SliderProducts.map((slide, i) => (
+          <SwiperSlide key={i}>
+            <div className="left-s">
+              <div className="name">
+                <span>{slide.name}</span>
+                <span>{slide.detail}</span>
+              </div>
+              <span>{slide.price}$</span>
+              <div>Show now</div>
+            </div>
+
+            <img src={slide.img} alt="product" className="img-p" />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+};
+
+export default Slider;
