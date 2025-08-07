@@ -5,10 +5,10 @@ import { CgShoppingBag } from "react-icons/cg";
 import { GoThreeBars } from "react-icons/go";
 
 const Header = () => {
-  const { ShowMenu, setShowMenu } = useState(true);
+  const { showMenu, setShowMenu } = useState(true);
 
   const toggleMenu = () => {
-    setShowMenu((ShowMenu) => !ShowMenu);
+    setShowMenu((showMenu) => !showMenu);
   };
   return (
     <div className={css.container}>
@@ -18,19 +18,20 @@ const Header = () => {
       </div>
 
       <div className={css.right}>
-        <div className={css.bars} onClick={toggleMenu}>
+        <div
+          className={css.bars}
+          onClick={toggleMenu}
+          style={{ display: showMenu ? "inherit" : "none" }}
+        >
           <GoThreeBars />
         </div>
-          <ul
-            className={css.menu}
-            style={{ display: ShowMenu ? "inherit" : "none" }}
-          >
-            <li>Collections</li>
-            <li>Brands</li>
-            <li>New</li>
-            <li>Sale</li>
-            <li>ENG</li>
-          </ul>
+        <ul className={css.menu}>
+          <li>Collections</li>
+          <li>Brands</li>
+          <li>New</li>
+          <li>Sale</li>
+          <li>ENG</li>
+        </ul>
         <input type="text" placeholder="Search" className={css.search} />
 
         <CgShoppingBag className={css.cart} />
